@@ -3,19 +3,31 @@ package com.hamid97m.herodatepicker.view
 import android.content.Context
 import android.util.AttributeSet
 import android.view.LayoutInflater
+import android.view.View
 import android.widget.FrameLayout
-import androidx.core.view.isVisible
+import android.widget.LinearLayout
+import android.widget.NumberPicker
 import com.hamid97m.herodatepicker.R
 import com.hamid97m.herodatepicker.utils.HeroDatePickerUtill
 import kotlinx.android.synthetic.main.hero_date_picker_view.view.*
 import java.util.*
-import java.util.zip.Inflater
 
-class HeroDatePickerView @JvmOverloads constructor(context: Context, attrs: AttributeSet? = null) :
-    FrameLayout(context, attrs) {
+class HeroDatePickerView @JvmOverloads constructor(context: Context) :
+    FrameLayout(context) {
 
-    private val inflater = context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
-    private val binding = inflater.inflate(R.layout.hero_date_picker_view, null);
+
+    constructor(context: Context, attrs: AttributeSet?) : this(context) {
+        init(context, attrs)
+    }
+
+    constructor(context: Context, attrs: AttributeSet?, defStyleAttr: Int) : this(
+        context
+    ) {
+        init(context, attrs)
+    }
+
+    lateinit var inflater: LayoutInflater
+    lateinit var binding: View
 
     var maxYear: Int = 1399
         set(value) {
@@ -29,23 +41,10 @@ class HeroDatePickerView @JvmOverloads constructor(context: Context, attrs: Attr
         }
 
 
-//    constructor(context: Context) : super(context) {
-//        init(context, null)
-//    }
-//
-//    constructor(context: Context, attrs: AttributeSet?) : super(context, attrs) {
-//        init(context, attrs)
-//    }
-//
-//    constructor(context: Context, attrs: AttributeSet?, defStyleAttr: Int) : super(
-//        context,
-//        attrs,
-//        defStyleAttr
-//    ) {
-//        init(context, attrs)
-//    }
-
     private fun init(context: Context, attrs: AttributeSet?) {
+        inflater = context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
+        binding=inflater.inflate(R.layout.hero_date_picker_view, this, true)
+
         val currentDate = Date(System.currentTimeMillis())
         val converter = HeroDatePickerUtill()
         converter.gregorianToPersian(currentDate)
