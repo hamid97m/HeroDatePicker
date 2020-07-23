@@ -55,16 +55,16 @@
         android:orientation="horizontal">
 
         <NumberPicker
-            android:id="@+id/dayPicker"
+            android:id="@+id/yearPicker"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:textSize="@dimen/body_1_max_text_size"
             android:theme="@style/DayPickerText"
-            app:layout_constraintBottom_toBottomOf="@+id/monthPicker"
-            app:layout_constraintEnd_toStartOf="@+id/guideline2"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/monthPicker" />
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/guideline3"
+            app:layout_constraintTop_toBottomOf="@+id/txt_year" />
 
 
         <NumberPicker
@@ -79,18 +79,18 @@
             app:layout_constraintStart_toStartOf="@+id/guideline2"
             app:layout_constraintTop_toTopOf="@+id/yearPicker" />
 
-
         <NumberPicker
-            android:id="@+id/yearPicker"
+            android:id="@+id/dayPicker"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:textSize="@dimen/body_1_max_text_size"
             android:theme="@style/DayPickerText"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="@+id/guideline3"
-            app:layout_constraintTop_toBottomOf="@+id/txt_year" />
+            app:layout_constraintBottom_toBottomOf="@+id/monthPicker"
+            app:layout_constraintEnd_toStartOf="@+id/guideline2"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/monthPicker" />
+
 
     </LinearLayout>
 
