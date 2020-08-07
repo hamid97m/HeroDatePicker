@@ -1,5 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
 
     <style name="DayPickerText"></style>
+    <declare-styleable name="HeroDatePickerView" tools:ignore="ResourceName">
+        <attr name="max_year" format="reference|integer" />
+        <attr name="min_year" format="reference|integer" />
+        <attr name="max_month" format="reference|integer" />
+        <attr name="max_day" format="reference|integer" />
+        <attr name="header_visibility" format="reference|boolean" />
+        <attr name="is_year_only" format="reference|boolean" />
+        <attr name="before_now_mode" format="reference|boolean" />
+
+    </declare-styleable>
 </resources>
