@@ -13,14 +13,7 @@ import java.util.*
 class HeroDatePickerView  constructor(context: Context) :
     FrameLayout(context) {
 
-
     constructor(context: Context, attrs: AttributeSet?) : this(context) {
-        init(context, attrs)
-    }
-
-    constructor(context: Context, attrs: AttributeSet?, defStyleAttr: Int) : this(
-        context
-    ) {
         init(context, attrs)
     }
 
@@ -105,7 +98,7 @@ class HeroDatePickerView  constructor(context: Context) :
         setDayOnView(finalDate)
     }
 
-    fun setDayOnView(time: Long) {
+    private fun setDayOnView(time: Long) {
         val date = Date(time)
         val persianDate = HeroDatePickerUtill()
         persianDate.gregorianToPersian(date)
