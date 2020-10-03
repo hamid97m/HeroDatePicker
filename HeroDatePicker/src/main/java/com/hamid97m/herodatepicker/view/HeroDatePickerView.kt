@@ -6,11 +6,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.widget.FrameLayout
 import com.hamid97m.herodatepicker.R
+import com.hamid97m.herodatepicker.enums.DateType
 import com.hamid97m.herodatepicker.utils.HeroDatePickerUtill
 import kotlinx.android.synthetic.main.hero_date_picker_view.view.*
 import java.util.*
 
-class HeroDatePickerView  constructor(context: Context) :
+class HeroDatePickerView constructor(context: Context) :
     FrameLayout(context) {
 
     constructor(context: Context, attrs: AttributeSet?) : this(context) {
@@ -46,7 +47,8 @@ class HeroDatePickerView  constructor(context: Context) :
         converter.gregorianToPersian(currentDate)
         if (attrs != null) {
             val a = context.obtainStyledAttributes(attrs, R.styleable.HeroDatePickerView)
-            val isBeforeNowMode = a.getBoolean(R.styleable.HeroDatePickerView_before_now_mode, false)
+            val isBeforeNowMode =
+                a.getBoolean(R.styleable.HeroDatePickerView_before_now_mode, false)
             if (isBeforeNowMode) {
                 with(converter) {
                     setMaxDate(year, month, day)
@@ -150,7 +152,7 @@ class HeroDatePickerView  constructor(context: Context) :
         }
     }
 
-    private fun getMonthLength(month: Int) = when (month) {
+    private fun getMonthLength(month: Int, type: DateType = DateType.SHAMSI) = when (month) {
         1, 2, 3, 4, 5, 6 -> {
             31
         }
@@ -165,20 +167,10 @@ class HeroDatePickerView  constructor(context: Context) :
         }
     }
 
-    private fun monthName(monthNumber: Int) = when (monthNumber) {
-        1 -> "فروردین"
-        2 -> "اردیبهشت"
-        3 -> "خرداد"
-        4 -> "تیر"
-        5 -> "مرداد"
-        6 -> "شهریور"
-        7 -> "مهر"
-        8 -> "آبان"
-        9 -> "آذر"
-        10 -> "دی"
-        11 -> "بهمن"
-        12 -> "اسفند"
-
+    private fun monthName(monthNumber: Int, type: DateType = DateType.SHAMSI) = when (type) {
+        DateType.SHAMSI -> {
+            resources.getStringArray(R.array.shamsi_mouth)[monthNumber+1]
+        }
         else -> ""
     }
 }

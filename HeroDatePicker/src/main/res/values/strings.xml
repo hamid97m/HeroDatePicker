@@ -3,4 +3,19 @@
     <string name="year">سال</string>
     <string name="month">ماه</string>
     <string name="day">روز</string>
+
+    <string-array name="shamsi_mouth">
+        <item>فروردین</item>
+        <item>اردیبهشت</item>
+        <item>خرداد</item>
+        <item>تیر</item>
+        <item>مرداد</item>
+        <item>شهریور</item>
+        <item>مهر</item>
+        <item>آبان</item>
+        <item>آذر</item>
+        <item>دی</item>
+        <item>بهمن</item>
+        <item>اسفند</item>
+    </string-array>
 </resources>
