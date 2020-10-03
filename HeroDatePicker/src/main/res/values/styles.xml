@@ -12,7 +12,7 @@
     </declare-styleable>
 
     <style name="DayPickerText">
-        <item name="android:textSize">17sp</item>
+        <item name="android:textSize">14sp</item>
         <item name="colorControlNormal">?colorOnBackground</item>
         <item name="android:textColorPrimary">?colorOnBackground</item>
     </style>
