@@ -5,7 +5,7 @@ import android.annotation.SuppressLint;
 import java.util.Calendar;
 import java.util.Date;
 
-public class HeroDatePickerUtill {
+public class ShamsiDatePickerUtill {
 
     private int day, month, year;
     private int jYear, jMonth, jDay;

@@ -6,8 +6,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.widget.FrameLayout
 import com.hamid97m.herodatepicker.R
-import com.hamid97m.herodatepicker.enums.DateType
-import com.hamid97m.herodatepicker.utils.HeroDatePickerUtill
+import com.hamid97m.herodatepicker.utils.HeroDatePickerUtil
+import com.hamid97m.herodatepicker.utils.ShamsiDatePickerUtill
+import com.hamid97m.herodatepicker.utils.ShamsiHeroDatePicker
 import kotlinx.android.synthetic.main.hero_date_picker_view.view.*
 import java.util.*
 
@@ -43,7 +44,8 @@ class HeroDatePickerView constructor(context: Context) :
         binding = inflater.inflate(R.layout.hero_date_picker_view, this, true)
 
         val currentDate = Date(System.currentTimeMillis())
-        val converter = HeroDatePickerUtill()
+        val converter =
+            ShamsiDatePickerUtill()
         converter.gregorianToPersian(currentDate)
         if (attrs != null) {
             val a = context.obtainStyledAttributes(attrs, R.styleable.HeroDatePickerView)
@@ -74,7 +76,8 @@ class HeroDatePickerView constructor(context: Context) :
             val year = binding.yearPicker.value
             val month = binding.monthPicker.value
             val day = binding.dayPicker.value
-            val dateConverter = HeroDatePickerUtill()
+            val dateConverter =
+                ShamsiDatePickerUtill()
             dateConverter.persianToGregorian(year, month, day)
             val date = Calendar.getInstance()
             date.set(dateConverter.year, dateConverter.month - 1, dateConverter.day, 0, 0)
@@ -87,7 +90,7 @@ class HeroDatePickerView constructor(context: Context) :
 
     fun setDayOnView() {
         val currentDate = Date(System.currentTimeMillis())
-        val converter = HeroDatePickerUtill()
+        val converter = ShamsiDatePickerUtill()
         converter.gregorianToPersian(currentDate)
         val finalDate = if (converter.year > maxYear) {
             converter.persianToGregorian(maxYear, 1, 1)
@@ -102,8 +105,9 @@ class HeroDatePickerView constructor(context: Context) :
 
     private fun setDayOnView(time: Long) {
         val date = Date(time)
-        val persianDate = HeroDatePickerUtill()
+        val persianDate = ShamsiDatePickerUtill()
         persianDate.gregorianToPersian(date)
+        val heroDatePickerUtil: HeroDatePickerUtil = ShamsiHeroDatePicker(maxYear, maxMonth, maxDay)
         binding.yearPicker.apply {
             minValue = minYear
             maxValue = maxYear
@@ -113,7 +117,7 @@ class HeroDatePickerView constructor(context: Context) :
             minValue = 1
             maxValue = 12
             value = persianDate.month
-            setFormatter { monthName(it) + " / " + it.toString() }
+            setFormatter { heroDatePickerUtil.getMonthName(it, context) + " / " + it.toString() }
         }
         binding.dayPicker.apply {
             minValue = 1
@@ -122,57 +126,22 @@ class HeroDatePickerView constructor(context: Context) :
         }
 
         binding.monthPicker.setOnValueChangedListener { _, _, newMonth ->
-            binding.dayPicker.maxValue = getMaxDayForCurrentMonth(newMonth)
+            binding.dayPicker.maxValue =
+                heroDatePickerUtil.getMaxDayForCurrentMonth(newMonth, binding.yearPicker.value)
         }
 
         binding.yearPicker.setOnValueChangedListener { _, _, newYear ->
-            binding.dayPicker.maxValue = getMaxDayForCurrentMonth(binding.monthPicker.value)
-            binding.monthPicker.maxValue = getMaxMonthForCurrentYear(newYear)
+            binding.dayPicker.maxValue = heroDatePickerUtil.getMaxDayForCurrentMonth(
+                binding.monthPicker.value,
+                binding.yearPicker.value
+            )
+            binding.monthPicker.maxValue = heroDatePickerUtil.getMaxMonthForCurrentYear(newYear)
         }
 
         binding.yearPicker.value = persianDate.year
     }
 
-    private fun getMaxMonthForCurrentYear(year: Int): Int {
-        return if (year == maxYear) {
-            maxMonth
-        } else {
-            12
-        }
-    }
 
-    private fun getMaxDayForCurrentMonth(month: Int): Int {
-        val monthLength = getMonthLength(month)
-        return if (binding.yearPicker.value == maxYear && month == maxMonth) {
-            if (maxDay < monthLength) maxDay
-            else
-                monthLength
-        } else {
-            monthLength
-        }
-    }
-
-    private fun getMonthLength(month: Int, type: DateType = DateType.SHAMSI) = when (month) {
-        1, 2, 3, 4, 5, 6 -> {
-            31
-        }
-        12 -> {
-            if (HeroDatePickerUtill.isFarsiLeap(binding.yearPicker.value))
-                30
-            else
-                29
-        }
-        else -> {
-            30
-        }
-    }
-
-    private fun monthName(monthNumber: Int, type: DateType = DateType.SHAMSI) = when (type) {
-        DateType.SHAMSI -> {
-            resources.getStringArray(R.array.shamsi_mouth)[monthNumber+1]
-        }
-        else -> ""
-    }
 }
 
 
