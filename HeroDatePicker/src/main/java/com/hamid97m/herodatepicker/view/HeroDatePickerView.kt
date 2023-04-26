@@ -5,10 +5,10 @@ import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.FrameLayout
-import com.hamid97m.herodatepicker.R
 import com.hamid97m.herodatepicker.utils.HeroDatePickerUtil
 import com.hamid97m.herodatepicker.utils.ShamsiDatePickerUtill
 import com.hamid97m.herodatepicker.utils.ShamsiHeroDatePicker
+import com.hamid97m.herodatepickersample.R
 import kotlinx.android.synthetic.main.hero_date_picker_view.view.*
 import java.util.*
 
