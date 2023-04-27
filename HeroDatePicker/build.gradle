@@ -1,5 +1,6 @@
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
+apply plugin: 'maven-publish'
 
 android {
     compileSdkVersion 33
@@ -41,7 +42,7 @@ android {
 
 dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
-    implementation "org.jetbrains.kotlin:kotlin-stdlib:1.8.10"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:1.8.20"
 
     def composeBom = platform('androidx.compose:compose-bom:2023.04.01')
     implementation composeBom
@@ -54,4 +55,18 @@ dependencies {
     implementation 'androidx.compose.ui:ui-tooling-preview'
     debugImplementation 'androidx.compose.ui:ui-tooling'
 
+}
+
+publishing {
+    publications {
+        // Creates a Maven publication called "release".
+        release(MavenPublication) {
+            // Applies the component for the release build variant.
+            from components.release
+            // You can then customize attributes of the publication as shown below.
+            groupId = 'com.github.hamid97m'
+            artifactId = 'heroDatePicker'
+            version = '1.0'
+        }
+    }
 }
