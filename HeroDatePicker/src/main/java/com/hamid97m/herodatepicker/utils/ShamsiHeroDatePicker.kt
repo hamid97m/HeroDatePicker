@@ -6,17 +6,27 @@ import com.hamid97m.herodatepickersample.R
 /**
  * Created by Hamid Mahmoodi on 10/3/20.
  */
-class ShamsiHeroDatePicker(private val maxYear: Int, private val maxMonth: Int, private val maxDay: Int) : HeroDatePickerUtil {
-    override fun getMonthLength(month: Int, currentYear: Int) = when (month) {
+class ShamsiHeroDatePicker(
+    private val maxYear: Int,
+    private val maxMonth: Int,
+    private val maxDay: Int,
+    private val selectableYearRange: Iterable<Int>?
+) : HeroDatePickerUtil {
+    override fun getMonthLength(
+        month: Int,
+        currentYear: Int,
+    ) = when (month) {
         1, 2, 3, 4, 5, 6 -> {
             31
         }
+
         12 -> {
             if (ShamsiDatePickerUtill.isFarsiLeap(currentYear))
                 30
             else
                 29
         }
+
         else -> {
             30
         }
@@ -36,7 +46,9 @@ class ShamsiHeroDatePicker(private val maxYear: Int, private val maxMonth: Int, 
         }
     }
 
-    override fun getMaxMonthForCurrentYear(currentYear: Int) =
+    override fun getMaxMonthForCurrentYear(
+        currentYear: Int
+    ) =
         if (currentYear == maxYear) {
             maxMonth
         } else {
@@ -44,5 +56,23 @@ class ShamsiHeroDatePicker(private val maxYear: Int, private val maxMonth: Int, 
         }
 
     override fun getMonthName(month: Int, context: Context) =
-        context.resources.getStringArray(R.array.shamsi_mouth)[month + 1]
+        context.resources.getStringArray(R.array.shamsi_mouth)[month - 1]
+
+    override fun getYearRange(): Iterable<Int> {
+        return selectableYearRange ?: maxYear - 200..maxYear
+    }
+
+    override fun getMonthRange(
+        currentYear: Int,
+    ): Iterable<Int> {
+        return 1..getMaxMonthForCurrentYear(currentYear)
+    }
+
+
+    override fun getDayRange(
+        currentMonth: Int,
+        currentYear: Int,
+    ): Iterable<Int> {
+        return 1..getMaxDayForCurrentMonth(currentMonth, currentYear)
+    }
 }

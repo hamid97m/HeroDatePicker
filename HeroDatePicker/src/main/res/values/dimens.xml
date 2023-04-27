@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <dimen name="padding_small">10dp</dimen>
-    <dimen name="body_1_max_text_size">12sp</dimen>
-    <dimen name="margin_small">12dp</dimen>
-</resources>
