@@ -34,7 +34,7 @@ repositories {
 
 ### Add the dependency
 
-After repository configuration, add a dependency on BazaarPay to your module's `build.gradle`
+After repository configuration, add a dependency on HeroDatePicker to your module's `build.gradle`
 file:
 
 <details open>
