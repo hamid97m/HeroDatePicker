@@ -65,6 +65,7 @@ dependencies {
 ```kotlin
 HeroDatePicker(modifier = Modifier.fillMaxWidth()) { selectedDate -> }
 ```
-
-<img src="https://github.com/hamid97m/HeroDatePicker/blob/master/images/library.png" width="250 align="center"">
+<p align="center">
+<img src="https://github.com/hamid97m/HeroDatePicker/blob/master/images/library.png" width="250 ">
+</p>
 
