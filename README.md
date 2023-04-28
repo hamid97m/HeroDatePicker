@@ -58,3 +58,13 @@ dependencies {
 ```
 
 </details>
+
+
+## Usage
+
+```kotlin
+HeroDatePicker(modifier = Modifier.fillMaxWidth()) { selectedDate -> }
+```
+
+![plot](./images/library.png)
+
