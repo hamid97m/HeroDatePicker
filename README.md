@@ -10,8 +10,8 @@
 
 ### Configure the repositories
 
-`HeroDatePicker` is available through the *JitPack* repository. You can declare this repository in your
-build script as follows:
+`HeroDatePicker` is available through the *JitPack* repository. You can declare this repository in
+your build script as follows:
 
 <details open>
 <summary>Kotlin DSL</summary>
@@ -62,13 +62,12 @@ dependencies {
 
 </details>
 
-
 ## Usage
 
 ```kotlin
 HeroDatePicker(modifier = Modifier.fillMaxWidth()) { selectedDate -> }
 ```
+
 <p align="center">
 <img src="https://github.com/hamid97m/HeroDatePicker/blob/master/images/library.png" width="250 ">
 </p>
-
