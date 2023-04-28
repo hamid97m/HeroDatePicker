@@ -1,6 +1,6 @@
 # HeroDatePicker
 
-![Banner](./images/banner.jpg)
+<img alt="Banner" src="./images/banner.jpg" width="800"/>
 
 [![Download](https://img.shields.io/jitpack/version/com.github.hamid97m/herodatepicker)](https://jitpack.io/#hamid97m/herodatepicker)
 
