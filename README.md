@@ -42,7 +42,7 @@ file:
 
 ```kotlin
 dependencies {
-    implementation("com.github.hamid97m:herodatepicker:1.0")
+    implementation("com.github.hamid97m:herodatepicker:1.0.0")
 }
 ```
 
@@ -53,7 +53,7 @@ dependencies {
 
 ```groovy
 dependencies {
-    implementation 'com.github.hamid97m:herodatepicker:1.0'
+    implementation 'com.github.hamid97m:herodatepicker:1.0.0'
 }
 ```
 
