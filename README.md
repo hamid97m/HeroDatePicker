@@ -65,7 +65,10 @@ dependencies {
 ## Usage
 
 ```kotlin
-HeroDatePicker(modifier = Modifier.fillMaxWidth()) { selectedDate -> }
+HeroDatePicker(Modifier.fillMaxWidth()) { selectedDate ->
+    val (year, month, day) = selectedDate
+    println("Selected Date: $year/$month/$day")
+}
 ```
 
 <p align="center">
