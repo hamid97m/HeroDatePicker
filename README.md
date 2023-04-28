@@ -66,5 +66,5 @@ dependencies {
 HeroDatePicker(modifier = Modifier.fillMaxWidth()) { selectedDate -> }
 ```
 
-![plot](./images/library.png | width=200)
+![plot](./images/library.png width=30% )
 
