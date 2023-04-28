@@ -66,5 +66,5 @@ dependencies {
 HeroDatePicker(modifier = Modifier.fillMaxWidth()) { selectedDate -> }
 ```
 
-<img src="https://github.com/hamid97m/HeroDatePicker/blob/master/images/library.jpg" width="48">
+<img src="https://github.com/hamid97m/HeroDatePicker/blob/master/images/library.png" width="48">
 
