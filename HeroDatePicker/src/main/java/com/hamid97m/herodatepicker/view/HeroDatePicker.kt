@@ -5,22 +5,31 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.material.LocalTextStyle
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.TextStyle
+import com.hamid97m.herodatepicker.model.SelectedDate
 import com.hamid97m.herodatepicker.utils.HeroDatePickerUtil
 import com.hamid97m.herodatepicker.utils.ShamsiDatePickerUtill
 import com.hamid97m.herodatepicker.utils.ShamsiHeroDatePicker
 import java.util.Date
 
+/**
+ * @param selectableYearRange determines the range of years that is selectable.
+ * @param isSelectFromFutureEnable if false, the max date that would be selected is now.
+ */
 @Composable
 fun HeroDatePicker(
     modifier: Modifier = Modifier,
     selectableYearRange: Iterable<Int>? = null,
     isSelectFromFutureEnable: Boolean = false,
-    textStyle: TextStyle = LocalTextStyle.current
+    textStyle: TextStyle = LocalTextStyle.current,
+    onSelectedDateChange: (SelectedDate) -> Unit
 ) {
     val currentDate = Date(System.currentTimeMillis())
     val currentDateShamsi = ShamsiDatePickerUtill()
@@ -42,10 +51,20 @@ fun HeroDatePicker(
             )
         }
     }
+    LaunchedEffect(Unit) {
+        onSelectedDateChange(
+            SelectedDate(
+                currentDateShamsi.year,
+                currentDateShamsi.month,
+                currentDateShamsi.day
+            )
+        )
+    }
+    var selectedYear by remember { mutableStateOf(currentDateShamsi.year) }
+    var selectedMonth by remember { mutableStateOf(currentDateShamsi.month) }
+    var selectedDay by remember { mutableStateOf(currentDateShamsi.day) }
 
-    val yearValue = remember { mutableStateOf(currentDateShamsi.year) }
-    val monthValue = remember { mutableStateOf(currentDateShamsi.month) }
-    val dayValue = remember { mutableStateOf(currentDateShamsi.day) }
+
 
     Column(modifier = modifier) {
         val context = LocalContext.current
@@ -54,33 +73,36 @@ fun HeroDatePicker(
                 modifier = Modifier.weight(0.25f),
                 textStyle = textStyle,
                 range = heroDatePickerUtil.getYearRange(),
-                value = yearValue.value,
-                onValueChange = { yearValue.value = it }
+                value = selectedYear,
+                onValueChange = {
+                    selectedYear = it
+                    onSelectedDateChange(SelectedDate(selectedYear, selectedMonth, selectedDay))
+                }
             )
 
             NumberPicker(
                 modifier = Modifier.weight(0.5f),
                 textStyle = textStyle,
-                range = heroDatePickerUtil.getMonthRange(yearValue.value),
-                value = monthValue.value,
+                range = heroDatePickerUtil.getMonthRange(selectedYear),
+                value = selectedMonth,
                 label = { value ->
-                    heroDatePickerUtil.getMonthName(
-                        value,
-                        context
-                    ) + " / " + value.toString()
+                    heroDatePickerUtil.getMonthName(value, context) + " / " + value.toString()
                 },
-                onValueChange = { monthValue.value = it }
+                onValueChange = {
+                    selectedMonth = it
+                    onSelectedDateChange(SelectedDate(selectedYear, selectedMonth, selectedDay))
+                }
             )
 
             NumberPicker(
                 modifier = Modifier.weight(0.25f),
                 textStyle = textStyle,
-                range = heroDatePickerUtil.getDayRange(
-                    monthValue.value,
-                    yearValue.value
-                ),
-                value = dayValue.value,
-                onValueChange = { dayValue.value = it }
+                range = heroDatePickerUtil.getDayRange(selectedMonth, selectedYear),
+                value = selectedDay,
+                onValueChange = {
+                    selectedDay = it
+                    onSelectedDateChange(SelectedDate(selectedYear, selectedMonth, selectedDay))
+                }
             )
 
         }

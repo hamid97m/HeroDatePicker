@@ -8,7 +8,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.TextStyle
 
 @Composable
-fun NumberPicker(
+internal fun NumberPicker(
     modifier: Modifier = Modifier,
     label: (Int) -> String = {
         it.toString()
