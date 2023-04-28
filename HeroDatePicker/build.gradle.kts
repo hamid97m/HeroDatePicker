@@ -1,20 +1,19 @@
 plugins {
-    id("com.android.application")
+    id("com.android.library")
     id("kotlin-android")
+    id("maven-publish")
 }
 
 android {
     namespace = "com.hamid97m.herodatepickersample"
-    compileSdk = 33
+    compileSdk = 31
 
     defaultConfig {
-        applicationId = "com.hamid97m.herodatepickersample"
         minSdk = 21
-        targetSdk = 33
-        versionCode = 1
-        versionName = "1.0"
+        targetSdk = 31
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles("consumer-rules.pro")
     }
 
     buildTypes {
@@ -57,4 +56,18 @@ dependencies {
     implementation("androidx.compose.material:material")
     implementation("androidx.compose.ui:ui-tooling-preview")
     debugImplementation("androidx.compose.ui:ui-tooling")
+}
+
+publishing {
+    publications {
+        create<MavenPublication>("release") {
+            groupId = "com.github.hamid97m"
+            artifactId = "heroDatePicker"
+            version = "1.0"
+
+            afterEvaluate {
+                from(components["release"])
+            }
+        }
+    }
 }
