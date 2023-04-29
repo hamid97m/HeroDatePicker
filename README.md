@@ -1,5 +1,6 @@
 # HeroDatePicker
-![plot](./images/banner.jpg)
+
+<img alt="Banner" src="./images/banner.jpg" width="500"/>
 
 [![Download](https://img.shields.io/jitpack/version/com.github.hamid97m/herodatepicker)](https://jitpack.io/#hamid97m/herodatepicker)
 
@@ -7,8 +8,8 @@
 
 ### Configure the repositories
 
-`HeroDatePicker` is available through the *JitPack* repository. You can declare this repository in your
-build script as follows:
+`HeroDatePicker` is available through the *JitPack* repository. You can declare this repository in
+your build script as follows:
 
 <details open>
 <summary>Kotlin DSL</summary>
@@ -59,13 +60,15 @@ dependencies {
 
 </details>
 
-
 ## Usage
 
 ```kotlin
-HeroDatePicker(modifier = Modifier.fillMaxWidth()) { selectedDate -> }
+HeroDatePicker(Modifier.fillMaxWidth()) { selectedDate ->
+    val (year, month, day) = selectedDate
+    println("Selected Date: $year/$month/$day")
+}
 ```
+
 <p align="center">
 <img src="https://github.com/hamid97m/HeroDatePicker/blob/master/images/library.png" width="250 ">
 </p>
-
