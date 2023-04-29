@@ -15,7 +15,7 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "HeroDatePickerSample"
+rootProject.name = "HeroDatePicker"
 
 include(":HeroDatePicker")
 include(":app")
