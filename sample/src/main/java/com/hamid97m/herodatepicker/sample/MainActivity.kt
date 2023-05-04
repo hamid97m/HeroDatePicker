@@ -1,4 +1,4 @@
-package com.hamid97m.herodatepickersample
+package com.hamid97m.herodatepicker.sample
 
 import android.os.Bundle
 import androidx.activity.compose.setContent

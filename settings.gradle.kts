@@ -18,4 +18,4 @@ dependencyResolutionManagement {
 rootProject.name = "HeroDatePicker"
 
 include(":HeroDatePicker")
-include(":app")
+include(":sample")
