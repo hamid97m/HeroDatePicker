@@ -12,25 +12,27 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import com.hamid97m.herodatepicker.model.SelectedDate
+import com.hamid97m.herodatepicker.sample.theme.HeroDatePickerTheme
 import com.hamid97m.herodatepicker.view.HeroDatePicker
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            var selectedDateState by remember { mutableStateOf(SelectedDate(0, 0, 0)) }
-            Column {
-                HeroDatePicker(modifier = Modifier.fillMaxWidth()) { selectedDate ->
-                    /*
-                    selectedDate.year
-                    selectedDate.month
-                    selectedDate.day
-                    */
-                    selectedDateState = selectedDate
+            HeroDatePickerTheme {
+                var selectedDateState by remember { mutableStateOf(SelectedDate(0, 0, 0)) }
+                Column {
+                    HeroDatePicker(modifier = Modifier.fillMaxWidth()) { selectedDate ->
+                        /*
+                        selectedDate.year
+                        selectedDate.month
+                        selectedDate.day
+                        */
+                        selectedDateState = selectedDate
+                    }
+                    Text(text = "${selectedDateState.year}/${selectedDateState.month}/${selectedDateState.day}")
                 }
-                Text(text = "${selectedDateState.year}/${selectedDateState.month}/${selectedDateState.day}")
             }
-
         }
     }
 }
