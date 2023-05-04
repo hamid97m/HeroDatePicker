@@ -6,7 +6,7 @@ plugins {
 
 android {
     namespace = "com.hamid97m.herodatepickersample"
-    compileSdk = libs.versions.androidCompileSdk.get().toInt()
+    compileSdk = 31 // libs.versions.androidCompileSdk.get().toInt()
 
     defaultConfig {
         minSdk = libs.versions.androidMinSdk.get().toInt()
