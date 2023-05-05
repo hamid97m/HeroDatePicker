@@ -1,0 +1,24 @@
+[versions]
+androidTargetSdk = "33"
+androidCompileSdk = "33"
+androidMinSdk = "21"
+androidPlugin = "8.0.0"
+androidxComposeCompiler = "1.4.6"
+kotlin = "1.8.20"
+
+[libraries]
+# AndroidX
+androidx-activity = { group = "androidx.activity", name = "activity-compose", version = "1.7.1" }
+androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version = "1.6.1" }
+androidx-compose-bom = { group = "androidx.compose", name = "compose-bom", version = "2023.04.01" }
+androidx-compose-material = { group = "androidx.compose.material", name = "material" }
+androidx-compose-tooling = { group = "androidx.compose.ui", name = "ui-tooling" }
+androidx-compose-tooling-preview = { group = "androidx.compose.ui", name = "ui-tooling-preview" }
+androidx-core = { group = "androidx.core", name = "core-ktx", version = "1.10.0" }
+
+# Others
+
+[plugins]
+android-application = { id = "com.android.application", version.ref = "androidPlugin" }
+android-library = { id = "com.android.library", version.ref = "androidPlugin" }
+kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
