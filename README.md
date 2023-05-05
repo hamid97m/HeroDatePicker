@@ -70,5 +70,5 @@ HeroDatePicker(Modifier.fillMaxWidth()) { selectedDate ->
 ```
 
 <p align="center">
-<img src="https://github.com/hamid97m/HeroDatePicker/blob/master/images/library.png" width="250 ">
+<img src="https://github.com/hamid97m/HeroDatePicker/blob/master/images/library.gif" alt="gif" width="250 ">
 </p>
