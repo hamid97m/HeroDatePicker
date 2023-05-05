@@ -2,6 +2,14 @@
 
 <img alt="Banner" src="./images/banner.jpg" width="500"/>
 
+HeroDatePicker is a customizable date picker component for Android Jetpack Compose that allows users to easily select Persian (Jalali) dates in a visually appealing way. It features a sleek and modern design, with smooth animations and intuitive controls.
+## Features:
+- Support for Persian (Jalali) calendar system
+- Customizable date format and locale
+- Ability to disable specific dates or date ranges
+- Integration with ViewModel for state management
+- Easy-to-use API with clear documentation
+
 [![Download](https://img.shields.io/jitpack/version/com.github.hamid97m/herodatepicker)](https://jitpack.io/#hamid97m/herodatepicker)
 
 ## Setup
@@ -72,3 +80,9 @@ HeroDatePicker(Modifier.fillMaxWidth()) { selectedDate ->
 <p align="center">
 <img src="https://github.com/hamid97m/HeroDatePicker/blob/master/images/library.gif" alt="gif" width="250 ">
 </p>
+
+## Contributing
+We welcome contributions from the community! If you find a bug or have a feature request, please open an issue on the GitHub repository. If you'd like to contribute code, please fork the repository and submit a pull request.
+
+## License
+HeroDatePicker is licensed under the MIT License.
