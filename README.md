@@ -69,6 +69,11 @@ HeroDatePicker(Modifier.fillMaxWidth()) { selectedDate ->
 }
 ```
 
+In addition, there is a sample app available in the
+project's [sample directory](https://github.com/hamid97m/HeroDatePicker/tree/master/sample) that
+demonstrates how to use the library.
+
+at directory of the project.
 <p align="center">
 <img alt="Screenshot" src="./images/screenshot.gif" width="250"/>
 </p>
