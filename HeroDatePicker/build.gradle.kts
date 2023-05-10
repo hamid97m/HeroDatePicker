@@ -5,7 +5,7 @@ plugins {
 }
 
 android {
-    namespace = "com.hamid97m.herodatepickersample"
+    namespace = "com.hamid97m.herodatepicker"
     compileSdk = 31 // libs.versions.androidCompileSdk.get().toInt()
 
     defaultConfig {

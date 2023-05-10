@@ -4,11 +4,11 @@ plugins {
 }
 
 android {
-    namespace = "com.hamid97m.herodatepickersample"
+    namespace = "com.hamid97m.herodatepicker.sample"
     compileSdk = libs.versions.androidCompileSdk.get().toInt()
 
     defaultConfig {
-        applicationId = "com.hamid97m.herodatepickersample"
+        applicationId = "com.hamid97m.herodatepicker.sample"
         minSdk = libs.versions.androidMinSdk.get().toInt()
         targetSdk = libs.versions.androidTargetSdk.get().toInt()
         versionCode = 1

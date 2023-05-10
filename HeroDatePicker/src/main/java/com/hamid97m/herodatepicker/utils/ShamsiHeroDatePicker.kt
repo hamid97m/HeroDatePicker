@@ -1,7 +1,7 @@
 package com.hamid97m.herodatepicker.utils
 
 import android.content.Context
-import com.hamid97m.herodatepickersample.R
+import com.hamid97m.herodatepicker.R
 
 /**
  * Created by Hamid Mahmoodi on 10/3/20.
