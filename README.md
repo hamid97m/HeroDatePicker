@@ -7,6 +7,8 @@ design, with smooth animations and intuitive controls.
 
 <img alt="Banner" src="./images/banner.jpg" width="500"/>
 
+[![Download](https://img.shields.io/jitpack/version/com.github.hamid97m/herodatepicker)](https://jitpack.io/#hamid97m/herodatepicker)
+
 ## Features:
 
 - Support for Persian (Jalali) calendar system
@@ -15,7 +17,6 @@ design, with smooth animations and intuitive controls.
 - Integration with ViewModel for state management
 - Easy-to-use API with clear documentation
 
-[![Download](https://img.shields.io/jitpack/version/com.github.hamid97m/herodatepicker)](https://jitpack.io/#hamid97m/herodatepicker)
 
 ## Setup
 
