@@ -20,12 +20,14 @@ import com.hamid97m.herodatepicker.utils.ShamsiHeroDatePicker
 import java.util.Date
 
 /**
+ * @param selectedDate sets the initial selected gregorian date.
  * @param selectableYearRange determines the range of years that is selectable.
  * @param isSelectFromFutureEnable if false, the max date that would be selected is now.
  */
 @Composable
 fun HeroDatePicker(
     modifier: Modifier = Modifier,
+    selectedDate: Date = Date(System.currentTimeMillis()),
     selectableYearRange: Iterable<Int>? = null,
     isSelectFromFutureEnable: Boolean = false,
     textStyle: TextStyle = LocalTextStyle.current,
@@ -51,18 +53,23 @@ fun HeroDatePicker(
             )
         }
     }
+
+    val selectedDateShamsi = ShamsiDatePickerUtill()
+    selectedDateShamsi.gregorianToPersian(selectedDate)
+
     LaunchedEffect(Unit) {
         onSelectedDateChange(
             SelectedDate(
-                currentDateShamsi.year,
-                currentDateShamsi.month,
-                currentDateShamsi.day
+                selectedDateShamsi.year,
+                selectedDateShamsi.month,
+                selectedDateShamsi.day
             )
         )
     }
-    var selectedYear by remember { mutableStateOf(currentDateShamsi.year) }
-    var selectedMonth by remember { mutableStateOf(currentDateShamsi.month) }
-    var selectedDay by remember { mutableStateOf(currentDateShamsi.day) }
+
+    var selectedYear by remember { mutableStateOf(selectedDateShamsi.year) }
+    var selectedMonth by remember { mutableStateOf(selectedDateShamsi.month) }
+    var selectedDay by remember { mutableStateOf(selectedDateShamsi.day) }
 
 
 
@@ -104,10 +111,6 @@ fun HeroDatePicker(
                     onSelectedDateChange(SelectedDate(selectedYear, selectedMonth, selectedDay))
                 }
             )
-
         }
-
     }
-
-
 }
